@@ -51,6 +51,9 @@ Albums.prototype.selectArtist = function () {
 
 Albums.prototype.searchAlbums = function (event) {
   var artistId = $( event.currentTarget ).attr('id');
+  var artistName = $(event.currentTarget).parent().prev().text();
+  $('.modal-header h4').empty()
+  $('.modal-header h4').text(artistName)
   var getUrl = "https://api.spotify.com/v1/artists/" + artistId + "/albums";
   $.ajax({
     type: "GET",
@@ -74,18 +77,18 @@ Albums.prototype.showAlbums = function (response) {
           <img src="${ image }" data-toggle="popover" data-placement="${ position }" title="${ album.name }" id="${ album.id }">
       </div>
     `;
-    $('.modal-content').append($(albumHtml));
-    $('#albumsModal').modal('show');
+    $('.modal-body').append($(albumHtml));
     $('[data-toggle="popover"]').popover()
     $('[data-toggle="popover"]').on('click', function (e) {
         $('[data-toggle="popover"]').not(this).popover('hide');
     });
   });
+  $('#albumsModal').modal('show');
 }
 
 Albums.prototype.closeAlbums = function () {
   $('#albumsModal').on('hidden.bs.modal', function() {
-    $('.modal-content').empty();
+    $('.modal-body').empty();
   });
 }
 
