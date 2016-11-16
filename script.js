@@ -1,10 +1,18 @@
-function SpotifyController(){}
+function Artists(){}
+function Albums(){}
+function Tracks(){}
 
-SpotifyController.prototype.searchQuery = function () {
+function SpotifyController () {
+  this.artists = new Artists();
+  this.albums = new Albums();
+  this.tracks = new Tracks();
+}
+
+Artists.prototype.searchQuery = function () {
   $('#custom-search-input').submit(this.searchArtist.bind(this))
 }
 
-SpotifyController.prototype.searchArtist = function (event) {
+Artists.prototype.searchArtist = function (event) {
   event.preventDefault();
   $('#results').empty();
   var query = "q=" + $('.search-query').val().replace(" ", "+") + "&type=artist"
@@ -18,7 +26,7 @@ SpotifyController.prototype.searchArtist = function (event) {
   });
 }
 
-SpotifyController.prototype.showArtists = function (response) {
+Artists.prototype.showArtists = function (response) {
   response.artists.items.forEach(function(artist) {
     var image = artist.images.length > 0 ? artist.images[1].url : "no-image.png"
     var artistHtml = `
@@ -37,11 +45,11 @@ SpotifyController.prototype.showArtists = function (response) {
   $('.search-query').val("");
 }
 
-SpotifyController.prototype.selectArtist = function () {
+Albums.prototype.selectArtist = function () {
   $(document).on('click', '.artist img', this.searchAlbums.bind(this))
 }
 
-SpotifyController.prototype.searchAlbums = function (event) {
+Albums.prototype.searchAlbums = function (event) {
   var artistId = $( event.currentTarget ).attr('id');
   var getUrl = "https://api.spotify.com/v1/artists/" + artistId + "/albums";
   $.ajax({
@@ -52,7 +60,7 @@ SpotifyController.prototype.searchAlbums = function (event) {
   });
 }
 
-SpotifyController.prototype.showAlbums = function (response) {
+Albums.prototype.showAlbums = function (response) {
   response.items.forEach(function(album, index) {
     var image = album.images.length > 0 ? album.images[0].url : "no-image.png"
     var position = (index + 1) % 3 === 0 ? "left" : "right"
@@ -70,28 +78,29 @@ SpotifyController.prototype.showAlbums = function (response) {
   });
 }
 
-SpotifyController.prototype.closeAlbums = function () {
+Albums.prototype.closeAlbums = function () {
   $('#albumsModal').on('hidden.bs.modal', function() {
     $('.modal-content').empty();
   });
 }
 
-SpotifyController.prototype.selectAlbum = function () {
+Tracks.prototype.selectAlbum = function () {
   $(document).on('click', '.album img', this.searchTracks.bind(this))
 }
 
-SpotifyController.prototype.searchTracks = function (event) {
+Tracks.prototype.searchTracks = function (event) {
+  console.log(this)
   var albumId = $( event.currentTarget ).attr('id');
   var getUrl = "https://api.spotify.com/v1/albums/" + albumId + "/tracks";
   $.ajax({
     type: "GET",
     url: getUrl,
-    success: this.showTraks,
+    success: this.showTracks,
     error: this.handleError
   });
 }
 
-SpotifyController.prototype.showTraks = function (response) {
+Tracks.prototype.showTracks = function (response) {
   $('.popover-content').append('<div class="list-group">');
   response.items.forEach(function(track) {
     var duration = `${ ((track.duration_ms /1000/60) << 0) }:${ Math.floor((track.duration_ms /1000) % 60) }`
@@ -104,18 +113,18 @@ SpotifyController.prototype.showTraks = function (response) {
   });
 }
 
-SpotifyController.prototype.closeTracks = function () {
+Tracks.prototype.closeTracks = function () {
   $('[data-toggle="popover"]').on('hidden.bs.popover', function (e) {
     $('[data-toggle="popover"]').empty();
   });
 }
 
 SpotifyController.prototype.listen = function () {
-  this.searchQuery();
-  this.selectArtist();
-  this.closeAlbums();
-  this.selectAlbum();
-  this.closeTracks();
+  this.artists.searchQuery();
+  this.albums.selectArtist();
+  this.albums.closeAlbums();
+  this.tracks.selectAlbum();
+  this.tracks.closeTracks();
 }
 
 SpotifyController.prototype.handleError = function (error) {
