@@ -63,9 +63,14 @@ Albums.prototype.searchAlbums = function (event) {
 Albums.prototype.showAlbums = function (response) {
   response.items.forEach(function(album, index) {
     var image = album.images.length > 0 ? album.images[0].url : "no-image.png"
-    var position = (index + 1) % 3 === 0 ? "left" : "right"
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      var position = (index + 1) % 3 === 0 ? "left" : "right"
+    } else {
+      var position = "bottom"
+    }
+
     var albumHtml = `
-      <div class="col-md-4 album">
+      <div class="col-md-4 col-xs-12 album">
           <img src="${ image }" data-toggle="popover" data-placement="${ position }" title="${ album.name }" id="${ album.id }">
       </div>
     `;
