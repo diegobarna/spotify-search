@@ -111,7 +111,9 @@ Tracks.prototype.searchTracks = function (event) {
 Tracks.prototype.showTracks = function (response) {
   $('.popover-content').append('<div class="list-group">');
   response.items.forEach(function(track) {
-    var duration = `${ ((track.duration_ms /1000/60) << 0) }:${ Math.floor((track.duration_ms /1000) % 60) }`
+    var seconds = Math.floor((track.duration_ms /1000) % 60);
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    var duration = `${ ((track.duration_ms /1000/60) << 0) }:${ seconds }`
     var trackHtml = `
         <a href="${ track.preview_url }" target="_blank" class="list-group-item">
           ${ track.track_number } - ${ track.name } (${ duration })
