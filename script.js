@@ -70,7 +70,7 @@ Albums.prototype.showAlbums = function (response) {
     }
 
     var albumHtml = `
-      <div class="col-md-4 col-xs-12 album">
+      <div class="col-md-4 col-sm-12 album">
           <img src="${ image }" data-toggle="popover" data-placement="${ position }" title="${ album.name }" id="${ album.id }">
       </div>
     `;

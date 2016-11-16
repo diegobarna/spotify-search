@@ -17,6 +17,25 @@ body {
         font-size: 1.3em !important;
         height: 1.3em !important;
     }
+
+    .album, .album img {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 100%;
+    }
+
+    .popover {
+        width: 100%;
+        min-width: 320px;
+        top: 10% !important;
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .popover {
+        top: 0 !important;
+    }        
 }
 
 .container {
@@ -80,10 +99,13 @@ body {
     max-width: 250px;
 }
 
+.album img:hover {
+    border: 2px solid #FEFEFE;
+}
+
 .popover {
     width: 100%;
     min-width: 320px;
-    top: -12% !important;
     display: block;
 }
 
@@ -98,7 +120,7 @@ body {
 }
 
 .arrow {
-    top: 20% !important;
+    top: 15% !important;
 }
 
 #custom-search-input {
