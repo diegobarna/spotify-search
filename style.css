@@ -6,7 +6,7 @@ body {
 @media only screen and (max-width: 768px) {
     .search {
         margin-top: 1% !important;
-        margin-left: 1% !important;
+        margin-left: 2% !important;
     }
 
     .search h1 { 
