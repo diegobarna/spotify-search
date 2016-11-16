@@ -3,22 +3,22 @@ body {
     color: #FEFEFE;
 }
 
-/*@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .search {
         margin-top: 1% !important;
         margin-left: 1% !important;
     }
 
     .search h1 { 
-        font-size: 2em !important;
+        font-size: 1.8em !important;
     }
 
     .search-query {
-        font-size: 1.4em !important;
-        height: 1.4em !important;
+        font-size: 1.3em !important;
+        height: 1.3em !important;
     }
 
-}*/
+}
 
 .container {
     margin-top: 50px;
