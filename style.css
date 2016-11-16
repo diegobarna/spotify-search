@@ -25,7 +25,8 @@ body {
     .album, .album img {
         width: 100% !important;
         max-width: 100% !important;
-        max-height: 100%;
+        min-height: 275px;
+        height: 100% !important;
     }
 
     .popover {
@@ -105,7 +106,7 @@ body {
 
 .album {
     padding: 1%;
-    height: 100%;
+    height: 275px;
     width: 33%;
     position: relative;
 }
@@ -113,7 +114,6 @@ body {
 .album img {
     width: 100%;
     max-height: 100%;
-    max-width: 250px;
 }
 
 .album img:hover {
