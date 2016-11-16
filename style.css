@@ -3,7 +3,7 @@ body {
     color: #FEFEFE;
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 768px) {
     .search {
         margin-top: 1% !important;
         margin-left: 1% !important;
