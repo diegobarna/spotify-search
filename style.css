@@ -9,6 +9,10 @@ body {
         margin-left: 2% !important;
     }
 
+    .modal {
+        margin-left: 3% !important;
+    }
+
     .search h1 { 
         font-size: 1.8em !important;
     }
@@ -92,7 +96,11 @@ body {
 }
 
 .modal-header button {
-    color: #FEFEFE;
+    color: #FEFEFE !important;
+}
+
+.modal-header button:hover {
+    color: #fff !important;
 }
 
 .album {
