@@ -1,0 +1,116 @@
+body {
+    background-color: #232323;
+    color: #FEFEFE;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.artist {
+    padding: 1%;
+}
+
+.artist-picture {
+    height: 250px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.artist-picture img {
+    position: absolute;
+    margin: auto;
+    max-width: 250px;
+    right: -100%;
+    left: -100%;
+    top: -100%;
+    bottom: -100%;
+}
+
+.artist-name {
+    max-width: 100%;
+}
+
+.artist-name h3{
+    min-height: 2em;
+    text-align: center;
+    font-size: 1.8em
+}
+
+.modal-dialog {
+    width: 900px;
+}
+
+.modal-content {
+    background-color: #232323;
+}
+
+.album {
+    margin: 1%;
+    height: 275px;
+    width: 275px;
+    position: relative;
+}
+
+.album img {
+    max-height: 100%;
+    max-width: 275px;
+}
+
+.popover {
+    width: 100%;
+    min-width: 450px;
+    top: -12% !important;
+    display: block;
+}
+
+.popover-title, .popover-content {
+    background-color: #1C1C1F;
+    color: #FEFEFE;
+}
+
+.popover-title {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.arrow {
+    top: 20% !important;
+}
+
+#custom-search-input {
+    margin:0;
+    margin-top: 10px;
+    padding: 0;
+}
+
+#custom-search-input .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#custom-search-input button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -28px;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #232323;
+}
+
